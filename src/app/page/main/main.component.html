@@ -1,0 +1,37 @@
+<div style="display: flex; flex-direction: column; width: 80%;">
+  <!--Header-->
+  <div>Head</div>
+  <!--Content-->
+  <div style="display: flex;flex-direction: row;">
+
+    <!--List-->
+    <div style="width: 400px;">
+      <mat-selection-list #landmark [multiple]="false"
+       (selectionChange)="show($event.option)">
+        <mat-list-option *ngFor="let landmark of this.landmarks" [value]="landmark"
+          style="width : 400 px; height : 160 px;">
+
+          <!--Landmark List-->
+          <div>
+            <img src="{{landmark.url}}" height="150px" width="200px">
+            {{landmark.name}}
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+
+    <!--Show-->
+    <div>
+      <div *ngIf="selectedLandmark != undefined">
+        <div style="display: flex; flex-direction: column;">
+          <img src="{{ this.selectedLandmark.url }}" width="500px" />
+          <span>{{this.selectedLandmark.name}}</span>
+          <span>{{this.selectedLandmark.country}}</span>
+          <span>{{this.selectedLandmark.detail}}</span>
+          <div><button>แก้ไข</button></div>
+          <div><button>ลบ</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
